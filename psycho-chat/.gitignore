@@ -1,0 +1,17 @@
+node_modules/
+.DS_Store
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
+.DS_Store
+.directory
+desktop.ini
+
+# Secrets - DO NOT COMMIT!
+config.json

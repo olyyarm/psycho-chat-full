@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Вход | Psycho-Chat</title>
+  <style>
+    body {
+      background: #18191c;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .login-form {
+      background: #232428;
+      padding: 32px 28px;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px #0004;
+      width: 340px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      border: 1px solid #232428;
+    }
+    .login-form h2 {
+      margin: 0 0 14px 0;
+      text-align: center;
+      font-weight: 400;
+      color: #e0e0e0;
+      letter-spacing: 0.02em;
+    }
+    .login-form input {
+      padding: 12px 14px;
+      border: 1.5px solid #44464a;
+      background: #18191c;
+      color: #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
+      margin-bottom: 4px;
+    }
+    .login-form input:focus {
+      border-color: #7e7e7e;
+    }
+    .login-form button {
+      padding: 12px 0;
+      background: #232428;
+      color: #e0e0e0;
+      border: 1.5px solid #44464a;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, border 0.2s;
+    }
+    .login-form button:hover {
+      background: #232428;
+      border-color: #888;
+      color: #fff;
+    }
+    .message {
+      text-align: center;
+      font-size: 0.97rem;
+      margin-top: 6px;
+      min-height: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <form class="login-form" onsubmit="login(event)">
+    <h2>Вход</h2>
+    <input type="email" id="email" placeholder="Email" required autocomplete="username">
+    <input type="password" id="password" placeholder="Пароль" required autocomplete="current-password">
+    <button type="submit">Войти</button>
+    <div class="message" id="message"></div>
+  </form>
+  <script>
+    async function login(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const messageEl = document.getElementById('message');
+      messageEl.textContent = 'Загрузка...';
+      try {
+        const response = await fetch('http://localhost:3002/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        if (response.ok && data.token) {
+          localStorage.setItem('psychochat_token', data.token);
+          messageEl.style.color = '#43b581';
+          messageEl.textContent = 'Вход выполнен!';
+          setTimeout(() => {
+            // Получаем выбранного психолога из localStorage
+            const psychologist = localStorage.getItem('psychochat_psychologist');
+            if (psychologist) {
+              window.location.href = 'chat.html?psychologist=' + psychologist;
+            } else {
+              window.location.href = 'index.html';
+            }
+          }, 800);
+        } else {
+          messageEl.style.color = '#f04747';
+          messageEl.textContent = data.message || 'Ошибка входа';
+        }
+      } catch (err) {
+        messageEl.style.color = '#f04747';
+        messageEl.textContent = 'Ошибка соединения с сервером';
+      }
+    }
+  </script>
+</body>
+</html>

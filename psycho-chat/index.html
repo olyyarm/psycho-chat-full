@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Исследуйте теории и взгляды разных школ психологии через диалог с известными психологами. Уникальный AI-чат для изучения психологии.">
+  <meta name="keywords" content="психология, Фрейд, Юнг, Адлер, психоанализ, AI чат">
+  <title>Психология — Диалог с великими психологами</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/carousel.css">
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="hero">
+      <!-- Левая часть: тексты -->
+      <div class="hero-text">
+        <h1>Психология</h1>
+        <p>Исследуйте теории и идеи о человеческом сознании и поведении через диалог с великими мыслителями прошлого.</p>
+
+        <h2>О проекте</h2>
+        <p>Это экспериментальная площадка, где вы можете выбрать одного из известных психологов и пообщаться с ним через AI-чат. 
+           Погрузитесь в мир психологии через призму различных школ и направлений, от классического психоанализа до индивидуальной психологии. 
+           Помните, что этот опыт носит образовательный характер и не заменяет профессиональную консультацию.</p>
+      </div>
+
+      <!-- Правая часть: «карусель» карточек -->
+      <div class="hero-cards">
+        <div class="cards-wrapper">
+          <!-- Карточка Фрейда -->
+          <div class="psych-card">
+            <img src="assets/images/psychologists/freud_v2.png" alt="Зигмунд Фрейд - основатель психоанализа">
+            <div class="card-content">
+              <h3>Зигмунд Фрейд</h3>
+              <h4>Психоанализ</h4>
+              <p>Основатель психоанализа, исследователь бессознательного, создатель теории о структуре личности.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('freud'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <!-- Карточка Юнг -->
+          <div class="psych-card">
+            <img src="assets/images/psychologists/jung_v2.png" alt="Карл Густав Юнг - основатель аналитической психологии">
+            <div class="card-content">
+              <h3>Карл Густав Юнг</h3>
+              <h4>Аналитическая психология</h4>
+              <p>Исследователь коллективного бессознательного, создатель теории архетипов и концепции индивидуации.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('jung'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <!-- Карточка Адлер -->
+          <div class="psych-card">
+            <img src="assets/images/psychologists/adler_v2.png" alt="Альфред Адлер - основатель индивидуальной психологии">
+            <div class="card-content">
+              <h3>Альфред Адлер</h3>
+              <h4>Индивидуальная психология</h4>
+              <p>Исследователь комплекса неполноценности и стремления к превосходству, основатель индивидуальной психологии.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('adler'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <!-- Карточка Хорни -->
+          <div class="psych-card future">
+            <img src="assets/images/psychologists/horney_v2.png" alt="Карен Хорни">
+            <div class="card-content">
+              <h3>Карен Хорни</h3>
+              <h4>Неофрейдизм</h4>
+              <p>Исследователь социальных и культурных факторов в развитии личности, создатель теории базальной тревоги.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('horney'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <!-- Карточка Эриксон -->
+          <div class="psych-card future">
+            <img src="assets/images/psychologists/erikson_v2.png" alt="Эрик Эриксон">
+            <div class="card-content">
+              <h3>Эрик Эриксон</h3>
+              <h4>Эго-психология</h4>
+              <p>Автор теории психосоциального развития, исследователь идентичности личности.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('erikson'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <!-- Карточка Маслоу -->
+          <div class="psych-card future">
+            <img src="assets/images/psychologists/maslow_v2.png" alt="Абрахам Маслоу">
+            <div class="card-content">
+              <h3>Абрахам Маслоу</h3>
+              <h4>Гуманистическая психология</h4>
+              <p>Создатель иерархии потребностей, исследователь самоактуализации личности.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('maslow'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <!-- Остальные карточки будут добавлены позже -->
+          <div class="psych-card future">
+            <img src="assets/images/psychologists/rogers_v2.png" alt="Карл Роджерс">
+            <div class="card-content">
+              <h3>Карл Роджерс</h3>
+              <h4>Гуманистическая психотерапия</h4>
+              <p>Основатель клиент-центрированной терапии.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('rogers'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <div class="psych-card future">
+            <img src="assets/images/psychologists/frankl_v2.png" alt="Виктор Франкл">
+            <div class="card-content">
+              <h3>Виктор Франкл</h3>
+              <h4>Логотерапия</h4>
+              <p>Создатель логотерапии, исследователь смысла жизни.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('frankl'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <div class="psych-card future">
+            <img src="assets/images/psychologists/perls_v2.png" alt="Фриц Перлз">
+            <div class="card-content">
+              <h3>Фриц Перлз</h3>
+              <h4>Гештальт-терапия</h4>
+              <p>Основатель гештальт-терапии.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('perls'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <div class="psych-card future">
+            <img src="assets/images/psychologists/behaviorism_v2.png" alt="Бихевиористы">
+            <div class="card-content">
+              <h3>Уотсон и Скиннер</h3>
+              <h4>Бихевиоризм</h4>
+              <p>Основатели поведенческой психологии.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('behaviorism'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <div class="psych-card future">
+            <img src="assets/images/psychologists/beck_v2.png" alt="Аарон Бек">
+            <div class="card-content">
+              <h3>Аарон Бек</h3>
+              <h4>Когнитивная терапия</h4>
+              <p>Основатель когнитивной терапии.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('beck'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+          <div class="psych-card future">
+            <img src="assets/images/psychologists/berne_v2.png" alt="Эрик Берн">
+            <div class="card-content">
+              <h3>Эрик Берн</h3>
+              <h4>Транзактный анализ</h4>
+              <p>Создатель теории транзактного анализа.</p>
+              <a class="btn-learn" href="#" onclick="goToChat('berne'); return false;">Начать диалог</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function goToChat(psychologist) {
+      const token = localStorage.getItem('psychochat_token');
+      localStorage.setItem('psychochat_psychologist', psychologist);
+      if (!token) {
+        window.location.href = 'login.html';
+      } else {
+        window.location.href = 'chat.html?psychologist=' + psychologist;
+      }
+    }
+  </script>
+</body>
+</html>

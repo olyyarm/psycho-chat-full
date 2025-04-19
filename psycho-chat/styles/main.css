@@ -1,0 +1,1037 @@
+/* Общие стили */
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #0b0b0b #0e0e0e;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0e0e0e;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #0b0b0b;
+  border-radius: 4px;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #1C1C1E;
+  color: #E5E5E7;
+  min-height: 100vh;
+  overflow-x: hidden; /* Добавляем это свойство */
+  position: relative; /* Добавляем это свойство */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Добавляем новые стили для основного контейнера */
+.main-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Страница чата */
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Фиксированная высота */
+  overflow: hidden; /* Запрещаем скролл страницы */
+  background: #121212;
+}
+
+.chat-page .container {
+  height: calc(100vh - 40px); /* Фиксированная высота */
+  overflow: hidden; /* Запрещаем скролл контейнера */
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-grow: 1;
+}
+
+/* Левая панель */
+.psychologists-panel {
+  width: 300px;
+  flex-shrink: 0;
+  background: rgba(18, 18, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.back-button {
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* Контейнер психологов */
+.current-psychologists {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.psychologist-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+/* Аватары */
+.psychologist-display img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+  background: none;
+  mix-blend-mode: normal;
+}
+
+/* Уменьшенные аватары для двойного режима */
+.current-psychologists .psychologist-display:not(:only-child) img {
+  width: 40px;
+  height: 40px;
+}
+
+.psychologist-info h1 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.psychologist-info p {
+  margin: 5px 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+
+/* Кнопки управления */
+.add-psychologist-btn {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.add-psychologist-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.remove-second-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.remove-second-btn:hover {
+    background: rgba(255, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+/* Кнопка удаления второго психолога */
+.dual-chat-mode .remove-second-btn {
+    position: absolute;
+    top: 20px;
+    right: 60px; /* Отступ справа, чтобы не перекрывать кнопку подсветки */
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.dual-chat-mode .remove-second-btn:hover {
+    background: rgba(255, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Убираем старые стили для кнопки в колонке */
+.dual-chat-mode .chat-column .remove-second-btn {
+    display: none;
+}
+
+/* Список психологов */
+.psychologists-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #2d3748 #1c1c1c;
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
+}
+
+.psychologists-list::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.psychologists-list::-webkit-scrollbar-track {
+  background: #1c1c1c;
+  border-radius: 4px;
+}
+
+.psychologists-list::-webkit-scrollbar-thumb {
+  background: #2d3748;
+  border-radius: 4px;
+}
+
+.psychologists-list.hidden {
+  display: none;
+}
+
+.psychologist-list-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  gap: 10px;
+  text-decoration: none;  /* Добавляем это свойство */
+  border: none;           /* Добавляем это свойство */
+  background: none;       /* Добавляем это свойство */
+  width: 100%;           /* Добавляем это свойство */
+  font-size: inherit;    /* Добавляем это свойство */
+  color: inherit;        /* Добавляем это свойство */
+  text-align: left;      /* Добавляем это свойство */
+}
+
+.psychologist-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.psychologist-list-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: none;
+  mix-blend-mode: normal;
+}
+
+.psychologist-list-name {
+  font-size: 14px;
+  color: #e0e0e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Основная область чата */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: rgba(18, 18, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  overflow: hidden; /* Важно! */
+}
+
+/* Одиночный режим чата */
+.single-chat-mode {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  height: calc(100vh - 180px);
+}
+
+.chat-messages {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 80px; /* Оставляем место для инпута */
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #0b0b0b #0e0e0e;
+}
+
+/* Режим двух психологов */
+.dual-chat-mode {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dual-chat-mode .chat-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  height: calc(100% - 80px); /* Оставляем место для инпута */
+  overflow: hidden; /* Важно! */
+}
+
+.dual-chat-mode .chat-column {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Важно! */
+  overflow: hidden; /* Важно! */
+  background: rgba(18, 18, 18, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+}
+
+/* Убираем границы у колонок */
+.dual-chat-mode .chat-column:first-child,
+.dual-chat-mode .chat-column:last-child {
+  border: none;
+}
+
+.dual-chat-mode .psychologist-header {
+  flex: 0 0 auto;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(28, 28, 30, 0.6);
+  border: none;
+  box-shadow: none;
+  border-radius: 20px 20px 0 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dual-chat-mode .psychologist-header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: none;
+  mix-blend-mode: normal;
+}
+
+.dual-chat-mode .psychologist-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dual-chat-mode .psychologist-header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dual-chat-mode .chat-messages-column {
+  flex: 1;
+  overflow-y: auto; /* Только здесь разрешаем скролл */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin: 10px 0;
+  height: 100%; /* Добавляем это */
+}
+
+.dual-chat-mode .chat-messages-column::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dual-chat-mode .chat-messages-column::-webkit-scrollbar-track {
+  background: #0e0e0e;
+  border-radius: 4px;
+}
+
+.dual-chat-mode .chat-messages-column::-webkit-scrollbar-thumb {
+  background: #0b0b0b;
+  border-radius: 4px;
+}
+
+/* Стили сообщений */
+.message {
+  padding: 12px 16px;
+  border-radius: 16px;
+  max-width: 90%;
+  word-wrap: break-word;
+  animation: messageAppear 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 8px;
+}
+
+.user-message {
+  background: rgba(28, 28, 30, 0.6);
+  align-self: flex-end;
+  margin-left: 20%;
+  border-bottom-right-radius: 4px;
+}
+
+.psychologist-message {
+  background: rgba(28, 28, 30, 0.4);
+  align-self: flex-start;
+  margin-right: 20%;
+  border-bottom-left-radius: 4px;
+}
+
+/* Поле ввода */
+.chat-input-wrapper {
+  flex: 0 0 auto;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(28, 28, 28, 0.95) 20%);
+  z-index: 100;
+}
+
+.chat-input {
+  display: flex;
+  gap: 16px;
+  padding: 15px;
+  background: rgba(28, 28, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+.chat-input textarea {
+  flex-grow: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #fff;
+  resize: none;
+  font-size: 16px;
+  font-family: inherit;
+  min-height: 44px;
+  max-height: 120px;
+}
+
+.chat-input textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.chat-input textarea::placeholder {
+  color: #ccc;
+}
+
+.send-button {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+.send-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Индикаторы и уведомления */
+.status-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  font-size: 14px;
+  color: #ccc;
+  z-index: 100;
+}
+
+.error-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: #e53e3e;
+  color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 1000;
+}
+
+/* Элементы управления чата */
+.chat-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  background: rgba(40, 44, 52, 0.9);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Подсветка терминов */
+.highlight-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  color: #ccc;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.highlight-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.highlight-toggle:hover {
+  color: #fff;
+}
+
+[class^="highlight-"] {
+  position: relative;
+  cursor: help;
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+.highlight-freud {
+  background: rgba(255, 0, 0, 0.2);
+}
+
+.highlight-jung {
+  background: rgba(0, 0, 255, 0.2);
+}
+
+.highlight-common {
+  background: rgba(128, 0, 128, 0.2);
+}
+
+[class^="highlight-"]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+/* Анимации */
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dual-chat-mode .chat-column {
+  animation: columnAppear 0.4s ease;
+}
+
+@keyframes columnAppear {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Состояния видимости */
+.dual-chat-mode.hidden,
+.single-chat-mode.hidden {
+  display: none;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1200px) {
+  .chat-page .container {
+    padding: 10px;
+  }
+
+  .psychologists-panel {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .dual-chat-mode .chat-columns {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .dual-chat-mode .chat-column {
+    height: calc(50vh - 100px);
+  }
+
+  .chat-input-wrapper {
+    padding: 10px;
+  }
+}
+
+/* Стили для hero-секции */
+.content-wrapper {
+  background-color: #0a0a0a; /* На 6 тонов темнее #121212 */
+  margin: 20px;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  min-height: 90vh;
+  gap: 5%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5%;
+  width: 100%;
+  color: #c1c0bf;
+}
+
+.hero-text p {
+  max-width: 90%;
+  margin: 1em 0;
+}
+
+.hero-cards {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-right: 5%;
+}
+
+/* Стили для изображений */
+img {
+  background-color: transparent;
+  max-width: 100%;
+  height: auto;
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+.psychologist-display img,
+.psychologist-list-avatar,
+.dual-chat-mode .psychologist-header img {
+  object-fit: cover;
+  background: none;
+  mix-blend-mode: normal;
+}
+
+@media (max-width: 768px) {
+  /* --- Стили для главной страницы (index.html) на мобильных --- */
+
+  /* Убираем отступы у body, чтобы контент занимал всю ширину */
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Делаем основной контейнер без лишних отступов */
+  .content-wrapper {
+    margin: 0;
+    padding: 20px; /* Небольшой внутренний отступ */
+    border-radius: 0; /* Убираем скругление */
+    min-height: 100vh; /* Занимаем весь экран по высоте */
+  }
+
+  /* Ставим блоки .hero друг под другом */
+  .hero {
+    grid-template-columns: 1fr; /* Один столбец */
+    gap: 20px; /* Уменьшаем отступ между блоками */
+    min-height: auto; /* Высота по контенту */
+    padding: 0; /* Убираем внутренний отступ, если он был */
+  }
+
+  /* Текстовый блок занимает всю ширину */
+  .hero-text {
+    padding: 0 10px; /* Небольшие боковые отступы */
+    width: 100%;
+    text-align: center; /* Можно центрировать текст для мобильных */
+  }
+
+  .hero-text h1 {
+    font-size: 2em; /* Уменьшаем заголовок */
+  }
+
+  .hero-text p {
+    max-width: 100%; /* Текст занимает всю доступную ширину */
+    font-size: 1em;
+  }
+
+  /* Блок с карточками тоже на всю ширину */
+  .hero-cards {
+    padding-right: 0; /* Убираем правый отступ */
+    width: 100%; /* Занимает всю ширину */
+    overflow: hidden; /* Предотвращаем случайный горизонтальный скролл страницы */
+  }
+
+  /* Контейнер с карточками */
+  .cards-wrapper {
+    padding: 10px 0; /* Уменьшаем вертикальные отступы */
+    /* Убедимся, что горизонтальный скролл работает */
+    overflow-x: auto;
+    /* Добавляем немного пространства слева/справа для удобства скролла */
+    padding-left: 15px;
+    padding-right: 15px;
+    /* Центрирование карточек может быть не нужно, если скролл */
+     /* justify-content: flex-start; */ /* Выравнивание по началу */
+     gap: 15px; /* Уменьшаем расстояние между карточками */
+  }
+
+  /* --- Стили для страницы чата (chat.html) на мобильных --- */
+
+  /* Убираем жесткую высоту и overflow у body для чата */
+  body.chat-page {
+    min-height: 100vh; /* Минимальная высота */
+    height: auto; /* Высота по контенту */
+    overflow-x: hidden;
+    overflow-y: auto; /* Разрешаем скролл страницы, если нужно */
+    padding: 0; /* Убираем отступы */
+    display: flex; /* Используем flex для body */
+    flex-direction: column; /* Основное направление - колонка */
+  }
+
+  /* Контейнер чата занимает все доступное пространство */
+  .chat-page .container {
+    flex-direction: column; /* Панель и чат друг под другом */
+    height: auto; /* Высота по контенту */
+    min-height: 100vh; /* Минимальная высота для заполнения экрана */
+    overflow: visible; /* Убираем скрытие overflow */
+    padding: 10px; /* Уменьшаем отступы */
+    gap: 10px; /* Уменьшаем отступ между панелью и чатом */
+    width: 100%; /* На всю ширину */
+    max-width: 100%; /* Убираем ограничение */
+    flex-grow: 1; /* Позволяем контейнеру расти */
+    display: flex; /* Используем flex */
+  }
+
+  /* Панель психологов */
+  .psychologists-panel {
+    width: 100%; /* На всю ширину */
+    flex-shrink: 0; /* Не сжимается */
+    order: -1; /* Можно поднять панель наверх */
+    padding: 10px;
+    max-height: none; /* Убираем ограничение по высоте, если было */
+    overflow-y: visible; /* Убираем внутренний скролл, если не нужен */
+    position: static; /* Убираем позиционирование, если было */
+    /* Если психологов много, можно сделать горизонтальный скролл выбора */
+    /* display: flex; flex-direction: row; overflow-x: auto; align-items: center; */
+  }
+
+  /* Уменьшаем аватарки и текст в панели */
+  .psychologist-display img {
+    width: 40px;
+    height: 40px;
+  }
+  .psychologist-info h1 {
+    font-size: 14px;
+  }
+  .psychologist-info p {
+    font-size: 12px;
+  }
+  .current-psychologists {
+     flex-direction: row; /* Можно в ряд */
+     flex-wrap: wrap; /* Перенос, если не помещаются */
+     justify-content: center; /* Центрировать */
+  }
+
+   /* Кнопка "Добавить" */
+  .add-psychologist-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  /* Список выбора психологов */
+  .psychologists-list {
+      max-height: 200px; /* Ограничиваем высоту списка */
+      overflow-y: auto;
+  }
+
+  /* Основная область чата */
+  .chat-main {
+    width: 100%; /* На всю ширину */
+    flex-grow: 1; /* Занимает оставшееся место */
+    display: flex; /* Используем flex */
+    flex-direction: column; /* Сообщения и ввод друг под другом */
+    overflow: hidden; /* Оставляем здесь, чтобы скролл был внутри */
+    border-radius: 16px; /* Можно оставить или убрать */
+    /* min-height: calc(100vh - 200px); /* Примерная минимальная высота */
+  }
+
+  /* Одиночный режим */
+  .single-chat-mode {
+    flex-grow: 1; /* Занимает место */
+    display: flex;
+    flex-direction: column;
+    position: static; /* Убираем абсолютное позиционирование */
+    height: auto; /* Убираем фиксированную высоту */
+    overflow: hidden; /* Чтобы скролл был в .chat-messages */
+  }
+
+  .chat-messages {
+    flex-grow: 1; /* Занимает все доступное место */
+    overflow-y: auto; /* Здесь будет скролл */
+    position: static; /* Убираем абсолютное позиционирование */
+    padding: 10px;
+    bottom: auto; /* Убираем отступ снизу */
+  }
+
+   /* Уменьшаем сообщения */
+  .message {
+      padding: 8px 12px;
+      font-size: 14px;
+      max-width: 85%; /* Чуть меньше максимальная ширина */
+      margin-bottom: 6px;
+  }
+  .user-message { margin-left: 15%; }
+  .psychologist-message { margin-right: 15%; }
+
+  /* Поле ввода */
+  .chat-input-wrapper {
+    position: sticky; /* Делаем поле ввода "липким" к низу */
+    bottom: 0;      /* Прилипает к низу .chat-main */
+    flex-shrink: 0; /* Не сжимается */
+    padding: 10px;
+    background: #1C1C1E; /* Фон, чтобы контент под ним не просвечивал */
+    z-index: 100; /* Поверх сообщений */
+    width: 100%; /* Важно для sticky */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Разделитель */
+  }
+
+  .chat-input {
+    padding: 10px; /* Уменьшаем отступы */
+    gap: 10px;
+  }
+
+  .chat-input textarea {
+    font-size: 14px;
+    padding: 8px 10px;
+    min-height: 38px; /* Уменьшаем высоту */
+    max-height: 100px; /* Ограничиваем максимальную */
+  }
+
+  .send-button {
+    padding: 8px 16px; /* Уменьшаем кнопку */
+    font-size: 14px;
+  }
+
+  /* Режим двойного чата */
+  .dual-chat-mode {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      overflow: hidden; /* Для скролла колонок */
+  }
+
+  .dual-chat-mode .chat-columns {
+      grid-template-columns: 1fr; /* Колонки друг под другом */
+      gap: 10px;
+      padding: 10px;
+      height: auto; /* Высота по контенту */
+      overflow: visible; /* Убираем overflow */
+      flex-grow: 1; /* Занимают доступное место */
+      display: flex; /* Используем flex для вертикального расположения */
+      flex-direction: column;
+  }
+
+  .dual-chat-mode .chat-column {
+      height: auto; /* Авто высота */
+      min-height: 250px; /* Минимальная высота колонки */
+      overflow: hidden; /* Чтобы скролл был внутри .chat-messages-column */
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1; /* Позволяем колонкам расти */
+  }
+
+   /* Уменьшаем шапку в колонке */
+  .dual-chat-mode .psychologist-header {
+    padding: 8px 10px;
+  }
+  .dual-chat-mode .psychologist-header img {
+     width: 30px;
+     height: 30px;
+  }
+  .dual-chat-mode .psychologist-header h3 {
+    font-size: 14px;
+  }
+  .dual-chat-mode .psychologist-header p {
+    font-size: 12px;
+  }
+
+  /* Скроллящаяся область сообщений в колонке */
+  .dual-chat-mode .chat-messages-column {
+    flex-grow: 1; /* Занимает доступное место */
+    overflow-y: auto; /* Скролл */
+    padding: 8px;
+    height: auto; /* Убираем фиксированную высоту */
+  }
+
+  /* Кнопка "назад" и контролы */
+  .back-button {
+      padding: 8px 16px;
+      font-size: 14px;
+  }
+  .chat-controls {
+      position: static; /* Убираем абсолютное позиционирование */
+      margin: 10px auto; /* Ставим по центру */
+      padding: 5px;
+      background: none; /* Убираем фон */
+  }
+  .highlight-toggle {
+      font-size: 12px;
+      padding: 5px 10px;
+  }
+}
+
+/* --- СТИЛЬ КНОПКИ ОЧИСТИТЬ ЧАТ --- */
+.clear-chat-button {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #2d2d32 0%, #18181a 100%);
+  color: #ff6961;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  margin-top: 8px;
+}
+.clear-chat-button:hover, .clear-chat-button:focus {
+  background: linear-gradient(90deg, #ff6961 0%, #ff3c3c 100%);
+  color: #fff;
+  border-color: #ff6961;
+  box-shadow: 0 4px 16px 0 rgba(255,105,97,0.13);
+}
+@media (max-width: 700px) {
+  .chat-controls {
+    right: 10px;
+    left: 10px;
+    width: auto;
+    min-width: 0;
+    padding: 8px;
+    border-radius: 10px;
+  }
+  .clear-chat-button {
+    font-size: 14px;
+    padding: 10px 10px;
+    margin-top: 10px;
+  }
+}

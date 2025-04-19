@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Диалог с психологом</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="chat-page">
+  <div class="container">
+    <!-- Левая панель -->
+    <aside class="psychologists-panel">
+      <a href="index.html" class="back-button">&larr; К выбору психолога</a>
+      <div class="current-psychologists">
+        <div class="selected-psychologist">
+          <img class="psychologist-avatar" src="" alt="Фото психолога">
+          <div class="psychologist-info">
+            <h1 class="psychologist-name"></h1>
+            <p class="psychologist-title"></p>
+          </div>
+        </div>
+      </div>
+      <button class="add-psychologist-btn">Добавить второго психолога</button>
+      <div class="psychologists-list hidden">
+        <!-- Список доступных психологов будет добавлен динамически -->
+      </div>
+    </aside>
+
+    <!-- Основная область чата -->
+    <main class="chat-main">
+      <!-- Режим одиночного чата -->
+      <div class="single-chat-mode">
+        <div class="chat-messages">
+          <!-- Сообщения будут добавляться здесь -->
+        </div>
+      </div>
+
+      <!-- Режим двойного чата -->
+      <div class="dual-chat-mode hidden">
+        <div class="chat-columns">
+          <div class="chat-column">
+            <div class="psychologist-header"></div>
+            <div class="chat-messages-column"></div>
+          </div>
+          <div class="chat-column">
+            <div class="psychologist-header"></div>
+            <div class="chat-messages-column"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Общие элементы управления -->
+      <div class="chat-controls">
+        <label class="highlight-toggle">
+          <input type="checkbox" id="highlightTerms">
+          <span>Подсвечивать ключевые термины</span>
+        </label>
+      </div>
+
+      <!-- Поле ввода сообщений -->
+      <div class="chat-input-wrapper">
+        <div class="chat-input">
+          <textarea
+            placeholder="Введите ваше сообщение..."
+            rows="2"
+            maxlength="1000"
+          ></textarea>
+          <button class="send-button" disabled>Отправить</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Скрипты -->
+  <script src="scripts/api.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
