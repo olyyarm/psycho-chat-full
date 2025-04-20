@@ -1,0 +1,89 @@
+{
+  "apiKey": "AIzaSyCfWJ5Z60bLAJGzqurcGbGp8t9uImAEnV0",
+  "psychologists": [
+    {
+      "id": "freud",
+      "name": "Зигмунд Фрейд",
+      "title": "Психоанализ",
+      "image": "assets/images/psychologists/freud.png",
+      "active": true
+    },
+    {
+      "id": "jung",
+      "name": "Карл Юнг",
+      "title": "Аналитическая психология",
+      "image": "assets/images/psychologists/jung.png",
+      "active": true
+    },
+    {
+      "id": "adler",
+      "name": "Альфред Адлер",
+      "title": "Индивидуальная психология",
+      "image": "assets/images/psychologists/adler.png",
+      "active": true
+    },
+    {
+      "id": "horney",
+      "name": "Карен Хорни",
+      "title": "Неофрейдизм",
+      "image": "assets/images/psychologists/horney.png",
+      "active": true
+    },
+    {
+      "id": "erikson",
+      "name": "Эрик Эриксон",
+      "title": "Эго-психология",
+      "image": "assets/images/psychologists/erikson.png",
+      "active": true
+    },
+    {
+      "id": "maslow",
+      "name": "Абрахам Маслоу",
+      "title": "Гуманистическая психология",
+      "image": "assets/images/psychologists/maslow.png",
+      "active": true
+    },
+    {
+      "id": "rogers",
+      "name": "Карл Роджерс",
+      "title": "Клиент-центрированная терапия",
+      "image": "assets/images/psychologists/rogers.png",
+      "active": true
+    },
+    {
+      "id": "frankl",
+      "name": "Виктор Франкл",
+      "title": "Логотерапия",
+      "image": "assets/images/psychologists/frankl.png",
+      "active": true
+    },
+    {
+      "id": "perls",
+      "name": "Фриц Перлз",
+      "title": "Гештальт-терапия",
+      "image": "assets/images/psychologists/perls.png",
+      "active": true
+    },
+    {
+      "id": "behaviorism",
+      "name": "Уотсон и Скиннер",
+      "title": "Бихевиоризм",
+      "image": "assets/images/psychologists/behaviorism.png",
+      "active": true
+    },
+    {
+      "id": "beck",
+      "name": "Аарон Бек",
+      "title": "Когнитивная терапия",
+      "image": "assets/images/psychologists/beck.png",
+      "active": true
+    },
+    {
+      "id": "berne",
+      "name": "Эрик Берн",
+      "title": "Транзактный анализ",
+      "image": "assets/images/psychologists/berne.png",
+      "active": true
+    }
+  ]
+}
