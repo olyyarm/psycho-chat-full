@@ -501,7 +501,7 @@ class PsychoChat {
         const token = localStorage.getItem('psychochat_token');
         if (!token) return;
         try {
-            await fetch('http://localhost:3002/api/chat/send', {
+            await fetch('https://d4bc7fb8-e3e2-442b-ab5c-20c524d5d0cd-00-34ezwffykrapk.picard.replit.dev/api/chat/send', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -547,7 +547,7 @@ class PsychoChat {
         const token = localStorage.getItem('psychochat_token');
         if (!token) return;
         try {
-            const response = await fetch(`http://localhost:3002/api/chat/history?psychologist=${encodeURIComponent(psychId)}`, {
+            const response = await fetch(`https://d4bc7fb8-e3e2-442b-ab5c-20c524d5d0cd-00-34ezwffykrapk.picard.replit.dev/api/chat/history?psychologist=${encodeURIComponent(psychId)}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -571,7 +571,7 @@ class PsychoChat {
         const token = localStorage.getItem('psychochat_token');
         if (!token) return;
         try {
-            const response = await fetch('http://localhost:3002/api/chat/clear', {
+            const response = await fetch('https://d4bc7fb8-e3e2-442b-ab5c-20c524d5d0cd-00-34ezwffykrapk.picard.replit.dev/api/chat/clear', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

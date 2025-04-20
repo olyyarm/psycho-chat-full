@@ -12,6 +12,7 @@ Thumbs.db
 .DS_Store
 .directory
 desktop.ini
+MAT/
 
 # Secrets - DO NOT COMMIT!
 config.json
